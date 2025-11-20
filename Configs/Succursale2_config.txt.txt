@@ -1,0 +1,89 @@
+Current configuration : 1016 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Succursale2
+!
+!
+!
+enable secret 5 $1$mERr$M6K8375b/jA8Hdls5XFEw/
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ description connect_to_Succursale1
+ ip address 192.168.40.98 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/1
+ description connect_to_Switchsucc2
+ ip address 192.168.40.1 255.255.255.192
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/2
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+ip route 192.168.40.64 255.255.255.224 192.168.40.97 
+!
+ip flow-export version 9
+!
+!
+!
+banner motd ^CIt's illegal to connect to the router without authorization^C
+!
+!
+!
+!
+line con 0
+ password f@ible124.
+ login
+!
+line aux 0
+!
+line vty 0 4
+ password moy%nne
+ login
+line vty 5 15
+ password moy%nne
+ login
+!
+!
+!
+end
